@@ -53,3 +53,4 @@ import { TransformBrandPipe } from './pipes/transform-brand.pipe';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+//taha
