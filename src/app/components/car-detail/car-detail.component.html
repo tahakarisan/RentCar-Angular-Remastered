@@ -1,0 +1,38 @@
+<div class="center-image" *ngFor="let carDetail of carDetails" >
+   <div class="carousel-container" style="width: 1000px; height: 600px;">
+    <div class="col-md-2">
+        <button class="nav-button left" style="left: 40px;">&#8249;</button>
+    </div>
+    <div class="col-md-8">
+        <img class="center-image" [src]="url+carDetail.imagePath" alt="">
+    </div>
+    <div class="col-md-2">
+        <button class="nav-button right">&#8250;</button>
+    </div>
+  </div>
+</div>
+<br><br><br>
+<div>
+    <div class="car-property" *ngFor="let carDetail of carDetails">
+        <thead>
+            <ul class="list-group">
+                <li class="list-group-item" style="background-color: rgb(20, 92, 187); color: white;">
+                    Özellikleri
+                </li>
+            </ul>
+            <br>
+               <b>Markası: </b> {{carDetail.brandName}} <br> 
+               <b>Renk: </b> {{carDetail.colorName}} <br>
+               <b>Model Yılı: </b> {{carDetail.modelYear}} <br>
+               <b>Açıklama: </b>  {{carDetail.description}} <br>
+        </thead>
+    </div>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,58 @@
+.center-image {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 550px; 
+    border-radius: 52px 52px 52px 52px;
+}
+
+.carousel-container {
+    position: relative;
+    width: 700px; 
+    height: 500px; 
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .carousel-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10;
+  }
+  
+  .nav-button.left {
+    left: 0px;
+    color: white;
+    font-size: 45px;
+    background-color: gray;
+    border-radius: 20px 20px 20px 20px;
+  }
+  
+  .nav-button.right {
+    right: 0px;
+    color: white;
+    font-size: 45px;
+    background-color: gray;
+    border-radius: 20px 20px 20px 20px;
+  }
+  
+  .car-property{
+    font-size: 18px;
+    
+  }

@@ -1,0 +1,30 @@
+<style>
+  .capitalize::first-letter {
+      text-transform: uppercase;
+  }
+</style>
+<div class="row">
+  <div class="form-group">
+    <label for="searchText" class="form-label">Ürün ara</label>
+    <input type="text" [(ngModel)]="searchText" class="form-control" id="searchText" placeholder="Arama ifadesi giriniz">
+  </div>
+  <div *ngFor="let car of cars |filter:searchText" class="col-md-4"><br> <!-- Burada 4, her satırda 3 kart göstermek için -->
+    <div class="card" style="width: 105%; height: 38rem; border-style:groove;">
+      <img class="card-img-top" [src]="url+car.imagePath" style="width: 100%; height: 20rem;">
+       <div class="card-body"><br>
+        <h5 class="card-title">{{car.description}}</h5><br>
+        <p class="card-text"><b>Renk:</b> {{car.colorName}} <br> <b>Ücret:</b> {{car.dailyPrice}}TL <br> <b>KDV'li fiyat: </b>{{car.dailyPrice |vatAdded:18}}TL</p>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <a [routerLink]="['/Cars/Details/',car.id]" class="btn btn-primary">Detaylara Git!</a>
+          </div>
+          <div class="col-md-6">
+            <a class="btn btn-primary">Sepete Ekle!</a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

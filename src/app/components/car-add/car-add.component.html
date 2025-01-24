@@ -1,0 +1,75 @@
+
+<div class="content">
+    <div class="col-md-12">
+        <br>
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title">
+                    Araba Ekle
+                </h5>
+            </div>
+            <div class="card-body">
+                <br>
+                <label for="description">Arabanın Açıklaması</label>
+                <form [formGroup]="carAddForm">
+                        <div class="form-group">
+                            <input type="text"
+                            id="description" 
+                            formControlName="description"
+                            class="form-control"
+                            placeholder="Ürün Adı">
+                        </div>
+                </form>
+                <br>
+                <label for="modelYear">Model Yılı</label>
+                <form [formGroup]="carAddForm">
+                    <div class="form-group">
+                        <input type="number"
+                        id="modelYear" 
+                        formControlName="modelYear"
+                        class="form-control"
+                        placeholder="Model Yılı">
+                    </div>
+                </form>
+                <br>
+                <label for="dailyPrice">Günlük Fiyatı</label>
+                <form [formGroup]="carAddForm">
+                    <div class="form-group">
+                        <input type="number"
+                        id="dailyPrice" 
+                        formControlName="dailyPrice"
+                        class="form-control"
+                        placeholder="Günlük Fiyatı">
+                    </div>
+              </form>
+              <br>
+              <label for="brand">Markası</label>
+                <form [formGroup]="carAddForm">
+                        <div class="form-group">
+                            <input type="number"
+                            id="brandId" 
+                            formControlName="brandId"
+                            class="form-control"
+                            placeholder="Araba Markası">
+                        </div>
+                </form>
+                <br>
+                <label for="color">Rengi</label>
+                <form [formGroup]="carAddForm">
+                        <div class="form-group">
+                            <input type="number"
+                            id="colorId" 
+                            formControlName="colorId"
+                            class="form-control"
+                            placeholder="Araba Rengi">
+                        </div>
+                </form>
+                <br>
+                <div class="card-footer">
+                    <button (click)="addCar()" class="btn btn-fill btn-primary">Araba Ekle</button>
+                </div>
+            </div>
+            </div>
+            
+        </div>
+</div>
