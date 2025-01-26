@@ -6,6 +6,7 @@ import { Brand } from '../../models/brand';
 import { BrandService } from '../../services/brand.service';
 import { ColorService } from '../../services/color.service';
 import { Color } from '../../models/color';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-car-add',
   templateUrl: './car-add.component.html',
@@ -17,7 +18,11 @@ export class CarAddComponent implements OnInit {
    colorId:number|null=null;
    brandId:number|null=null;
    carAddForm:FormGroup;    
-   constructor(private formBuilder:FormBuilder,private carService:CarService,private brandService:BrandService,private colorService:ColorService){}
+   constructor(private formBuilder:FormBuilder,
+    private carService:CarService,
+    private brandService:BrandService,
+    private colorService:ColorService,
+    private toastrService:ToastrService){}
    ngOnInit(): void {
      this.createCarAddForm();
      this.brandService.getBrands().subscribe(response=>{
@@ -45,35 +50,22 @@ export class CarAddComponent implements OnInit {
         brandId:["",Validators.required]
        })
    }
-   //saasfsaasdfaf
 
    addCar(){
     if(this.carAddForm.valid){
       let carModel = Object.assign({},this.carAddForm.value)
-      this.carService.addCar(carModel).subscribe(response=>{
-        console.log(response.message);
-        console.log("başarılı")
+      this.carService.addCar(carModel).subscribe((response)=>{
+        this.toastrService.success(response.message,"Ekleme Başarılı")
       },responseError=>{
         if(responseError.error.ValidationErrors.length>0){
           for (let i = 0; i < responseError.error.ValidationErrors.length; i++) {
-            console.log(responseError.error.ValidationErrors[i].ErrorMessage);
-            
+            this.toastrService.error(responseError.error.ValidationErrors[i].ErrorMessage,"Ekleme Başarısız")
           }
-         //safas //sada
         }
-
-        //AASAFASF
         else{
-///asasdas
+          this.toastrService.error("Formunuz eksik","Dikkat")
         }
-        
       })
     }
-    else{
-      console.log("hata")
-    }
-     
    }
-
-
 }

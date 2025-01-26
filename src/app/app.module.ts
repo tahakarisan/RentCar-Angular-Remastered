@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarComponent } from './components/car/car.component';
@@ -18,8 +17,10 @@ import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { CarFilterComponent } from './components/car-filter/car-filter.component';
-import { CarAddComponent } from './components/car-add/car-add.component';
 import { TransformBrandPipe } from './pipes/transform-brand.pipe';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -36,15 +37,17 @@ import { TransformBrandPipe } from './pipes/transform-brand.pipe';
     VatAddedPipe,
     FilterPipe,
     CarFilterComponent,
-    CarAddComponent,
     TransformBrandPipe,
+    CarAddComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot() 
   ],
   providers: [
     provideClientHydration(),
