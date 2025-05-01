@@ -1,3 +1,14 @@
+<h4 style="color: rgb(0, 97, 241); margin-bottom: 10px;">
+    Renkler
+</h4>
+<input 
+type="text"
+ [(ngModel)]="filterColor"
+  class="form-control" 
+  id="searchText"
+   placeholder="Renk arayın"
+   style="width: 100%; margin-bottom: 15px;"
+>
 <ul class="list-group">
         <li style="cursor: pointer;"
         (click)="setCurrentColor(null)"
@@ -5,7 +16,7 @@
         [class]="getAllCurrentColorClass()">
             Tüm Renkler
         </li>
-    <li style="cursor: pointer;" *ngFor="let color of colors" 
+    <li style="cursor: pointer;" *ngFor="let color of colors |colorFilter:filterColor" 
     (click)="setCurrentColor(color);setColorFilter(color.id)"
     [routerLink]="['/Cars/color/',color.id]"
     [class]="getCurrentColorClass(color)">

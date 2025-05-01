@@ -1,29 +1,56 @@
 <style>
   .capitalize::first-letter {
-      text-transform: uppercase;
+    text-transform: uppercase;
   }
 </style>
-<div class="row">
-  <div class="form-group">
-    <label for="searchText" class="form-label">Ürün ara</label>
-    <input type="text" [(ngModel)]="searchText" class="form-control" id="searchText" placeholder="Arama ifadesi giriniz">
+
+<div class="container py-4">
+  <div class="mb-4">
+    <label for="searchText" class="form-label fw-bold">Araba Ara</label>
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      class="form-control"
+      id="searchText"
+      placeholder="Aramak istediğiniz arabanın adını girin..."
+    />
   </div>
-  <div *ngFor="let car of cars |filter:searchText" class="col-md-4"><br> <!-- Burada 4, her satırda 3 kart göstermek için -->
-    <div class="card" style="width: 105%; height: 38rem; border-style:groove;">
-      <img class="card-img-top" [src]="url+car.imagePath" style="width: 100%; height: 20rem;">
-       <div class="card-body"><br>
-        <h5 class="card-title">{{car.description}}</h5><br>
-        <p class="card-text"><b>Renk:</b> {{car.colorName}} <br> <b>Ücret:</b> {{car.dailyPrice}}TL <br> <b>KDV'li fiyat: </b>{{car.dailyPrice |vatAdded:18}}TL</p>
-        
-        <div class="row">
-          <div class="col-md-6">
-            <a [routerLink]="['/Cars/Details/',car.id]" class="btn btn-primary">Detaylara Git!</a>
-          </div>
-          <div class="col-md-6">
-            <a class="btn btn-primary">Sepete Ekle!</a>
+
+  <div class="row g-4">
+    <div
+      *ngFor="let car of cars | filter: searchText"
+      class="col-12 col-sm-6 col-lg-4 d-flex align-items-stretch"
+    >
+      <div class="card shadow-sm w-100 h-100 border-1" >
+        <img
+          class="card-img-top img-fluid"
+          [src]="url + car.imagePath"
+          alt="Araç görseli"
+          style="object-fit: cover; height: 220px;"
+        />
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title capitalize text-primary">{{ car.description }}</h5>
+          <p class="card-text mb-3">
+            <strong>Renk:</strong> {{ car.colorName }}<br />
+            <strong>Ücret:</strong> {{ car.dailyPrice }} TL<br />
+            <strong>KDV'li Fiyat:</strong> {{ car.dailyPrice | vatAdded:18 }} TL
+          </p>
+          <div class="mt-auto">
+            <div class="d-grid gap-2">
+              <a
+                [routerLink]="['/Cars/Details/', car.id]"
+                class="btn btn-outline-primary"
+              >
+                Detaylara Git
+              </a>
+              <a
+                class="btn btn-outline-primary"
+              >
+                Favorilere Ekle
+              </a>
+            </div>
           </div>
         </div>
-        
       </div>
     </div>
   </div>

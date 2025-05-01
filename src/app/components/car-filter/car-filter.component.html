@@ -1,1 +1,9 @@
-<button [routerLink]="['/Cars/brand', brandFilter, 'color', colorFilter]" type="button" class="btn btn-success">Filtrele</button>
+
+<button
+  class="btn btn-outline-primary d-flex align-items-center gap-2 px-4 py-2 rounded-pill shadow-sm"
+  [routerLink]="['/Cars/brand', brandFilter, 'color', colorFilter]"
+  style="align-items: center;"
+>
+  <i class="bi bi-funnel-fill"></i> <!-- Bootstrap icon -->
+  <span>Filtrele</span>
+</button>

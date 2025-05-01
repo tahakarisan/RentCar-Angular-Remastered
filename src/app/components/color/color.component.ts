@@ -9,6 +9,7 @@ import { ShareService } from '../../services/share.service';
   styleUrl: './color.component.css'
 })
 export class ColorComponent implements OnInit {
+  filterColor: string = ""; 
   colors:Color[]=[];
   currentColor:Color|null=null;
   constructor(private colorService:ColorService,private carService:CarService,private shareService:ShareService){}

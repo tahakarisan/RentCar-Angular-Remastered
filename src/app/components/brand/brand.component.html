@@ -1,4 +1,14 @@
-
+<h4 style="color: rgb(0, 97, 241); margin-bottom: 10px;">
+    Markalar
+</h4>
+<input 
+type="text"
+ [(ngModel)]="filterBrandName"
+  class="form-control" 
+  id="searchText"
+   placeholder="Marka ismi arayın"
+   style="width: 100%; margin-bottom: 15px;"
+>
 <ul class="list-group">
     <li style="cursor: pointer;" (click)="setCurrentBrand(null)"
     [routerLink]="['']"
@@ -6,7 +16,7 @@
     
     Tüm Markalar
     </li>
-    <li *ngFor="let brand of brands" [value]="brand.id" (click)="setCurrentBrand(brand);setBrandFilterId(brand.id)" [routerLink] = "['/Cars/brand/',brand.id]"[class]="getCurrentBrandClass(brand)" style="cursor: pointer;">
+    <li *ngFor="let brand of brands |brandFilter:filterBrandName" [value]="brand.id" (click)="setCurrentBrand(brand);setBrandFilterId(brand.id)" [routerLink] = "['/Cars/brand/',brand.id]"[class]="getCurrentBrandClass(brand)" style="cursor: pointer;">
     {{brand.brandName}}
     </li>
 </ul>
