@@ -34,21 +34,41 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  checkToken(){
+    let token = localStorage.getItem("token");
+    if(token){
+      return true;
+    }
+    return false;
+  }
+
+  check(){
+    console.log("Check butonuna basıldı!");  // Butona basıldığını test et
+    console.log(this.loginForm.value);  // Form değerlerini konsola yazdır
+    if (this.loginForm.valid) {
+      console.log("Form geçerli:", this.loginForm.value);
+    } else {
+      console.log("Form geçersiz!");
+      this.toastrService.info("Geçersiz")
+    }
+  }
+
   login() {
     console.log("Login butonuna basıldı!");  // Butona basıldığını test et
     if (this.loginForm.valid) {
       console.log("Form geçerli:", this.loginForm.value);
       let loginModel = Object.assign({}, this.loginForm.value);
       this.authService.login(loginModel).subscribe(response=>{
-        this.toastrService.info("Giriş başarılı");
+        this.toastrService.success("Giriş başarılı");
         localStorage.setItem("token",response.data.token);
         this.router.navigate([""]);
         console.log(response);
       },responseError=>{
-        this.toastrService.error("Giriş Başarısız");
+        this.toastrService.error("Giriş Başarısız,Bilgileri kontrol ediniz!");
       })
     } else {
       console.log("Form geçersiz!");
+      this.toastrService.error("Geçersiz Bilgiler!","E-posta ve Şifre alanlarını kontrol ediniz.");
     }
   }
 }

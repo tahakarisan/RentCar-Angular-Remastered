@@ -1,36 +1,25 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">RentCar</a>
+      <a [routerLink]="['']">
+        <img src="assets/images/header.png" alt="Aslan">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Hakkımızda</a>
+          <li class="nav-item" style="margin-left: 20px;">
+            <a class="nav-link active navElement" aria-current="page" href="#">Hakkımızda</a>
           </li>
           
           <li class="nav-item">
-            <a class="nav-link active" href="#">Favoriler</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Sepetim
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            <a class="nav-link active navElement" [routerLink]="['/favories']">Favoriler</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <button [routerLink]="['/login']" style="margin-right: 10px;" class="btn btn-outline-success" type="submit">Giriş Yap</button>
-          <button [routerLink]="['/register']" class="btn btn-outline-primary" type="submit">Kayıt Ol</button>
+          <button *ngIf="checkToken()==true;" (click)="quit()" [routerLink]="['']" style="margin-right: 10px;" class="btn btn-outline-danger" type="submit">Çıkış Yap</button>
+          <button *ngIf="checkToken()==false;" [routerLink]="['/login']" style="margin-right: 10px;" class="btn btn-outline-success" type="submit">Giriş Yap</button>
+          <button  [routerLink]="['/register']" class="btn btn-outline-primary" type="submit">Kayıt Ol</button>
         </form>
       </div>
     </div>

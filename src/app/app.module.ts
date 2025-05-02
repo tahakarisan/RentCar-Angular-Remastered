@@ -24,6 +24,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './components/login/login.component';
 import { BrandFilterPipe } from './pipes/brand-filter.pipe';
 import { ColorFilterPipe } from './pipes/color-filter.pipe';
+import { FavoriesComponent } from './components/favories/favories.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ColorFilterPipe } from './pipes/color-filter.pipe';
     LoginComponent,
     BrandFilterPipe,
     ColorFilterPipe,
+    FavoriesComponent,
   ],
   imports: [
     BrowserModule,

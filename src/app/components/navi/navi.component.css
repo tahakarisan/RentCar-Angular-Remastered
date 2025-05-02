@@ -1,0 +1,7 @@
+.navElement{
+    color: black;
+}
+.navElement:hover{
+    color: #007bff;
+    cursor: pointer;
+}
