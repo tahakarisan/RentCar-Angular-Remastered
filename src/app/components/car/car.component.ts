@@ -5,6 +5,8 @@ import { response } from 'express';
 import { ActivatedRoute } from '@angular/router';
 import { CarImage } from '../../models/carImage';
 import { Color } from '../../models/color';
+import { FavCarService } from '../../services/fav-car.service';
+import { get } from 'http';
 
 @Component({
   selector: 'app-car',
@@ -12,15 +14,22 @@ import { Color } from '../../models/color';
   styleUrl: './car.component.css'
 })
 export class CarComponent implements OnInit {
-    
+  userId: string | null = null;
   cars:Car[]=[];
   colors:Color[]=[];
   carImages:CarImage[]=[];
   searchText:"";
   url = "https://localhost:44398/Images/";
-  constructor(private carService:CarService,private activatedRoute:ActivatedRoute){
+  constructor(
+    private carService:CarService,
+    private activatedRoute:ActivatedRoute,
+    private favCarService:FavCarService){
   }
   ngOnInit(): void {
+    this.favCarService.userId$.subscribe(userId => {
+      this.userId = userId; // value'yu burada alıyoruz
+      console.log("User ID:", this.userId);
+    });
     this.activatedRoute.params.subscribe(params=>{
       
        if(params["brandId"]){
@@ -38,6 +47,7 @@ export class CarComponent implements OnInit {
       }
     })
   }
+
   getCars(){
     this.carService.getCars().subscribe(response=>{
       this.cars=response.data
