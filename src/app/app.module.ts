@@ -25,6 +25,7 @@ import { LoginComponent } from './components/login/login.component';
 import { BrandFilterPipe } from './pipes/brand-filter.pipe';
 import { ColorFilterPipe } from './pipes/color-filter.pipe';
 import { FavoriesComponent } from './components/favories/favories.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { FavoriesComponent } from './components/favories/favories.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot() 
+    ToastrModule.forRoot(),
+    CarouselModule.forRoot()
   ],
   providers: [
     provideClientHydration(),

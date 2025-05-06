@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes,ExtraOptions } from '@angular/router';
 import { CarComponent } from './components/car/car.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { CarFilterComponent } from './components/car-filter/car-filter.component';
@@ -18,9 +18,12 @@ const routes: Routes = [
   {path:"login",component:LoginComponent},
   {path:"favories",component:FavoriesComponent},
 ];
-
+const routerOptions: ExtraOptions = {
+  scrollPositionRestoration: 'enabled', // <-- bu satır kritik
+  anchorScrolling: 'enabled',           // (#anchor için)
+};
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,routerOptions)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -7,4 +7,5 @@ export interface CarDetail{
     description:string;
     modelYear:number;  
     imagePath:string;  
+    coverPath:string;
 }
