@@ -4,13 +4,12 @@
 <div  class="container py-5">
   <div class="row g-5 align-items-start">
     <div class="col-md-6" *ngFor="let carDetail of carDetails">
-      <carousel  [activeSlide]="slideConfig" [isAnimated]="true" [interval]="0" class="position-relative"> <!-- Otomatik geçişi kapat -->
+      <carousel  [activeSlide]="0" [isAnimated]="true" [interval]="0" class="position-relative"> <!-- Otomatik geçişi kapat -->
         <slide  *ngFor="let image of carDetail.imagePath; let i = index">
           <img [src]="getCarImage(image)" class="d-block w-100 rounded" alt="Slide {{i + 1}}">
         </slide>
       </carousel>
     </div>
-
     <!-- Car Details -->
     <div *ngFor="let carDetail of carDetails" class="col-md-6 animate__animated animate__fadeInRight">
       
@@ -34,10 +33,7 @@
       <button class="btn btn-primary btn-lg mt-3">
         <i class="bi bi-calendar-check"></i> Rezerve Et
       </button>
-      
     </div>
-
   </div>
 </div>
 
-<!-- Animate.css için -->

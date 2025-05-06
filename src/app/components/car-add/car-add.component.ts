@@ -7,6 +7,8 @@ import { BrandService } from '../../services/brand.service';
 import { ColorService } from '../../services/color.service';
 import { Color } from '../../models/color';
 import { ToastrService } from 'ngx-toastr';
+import { FavCarService } from '../../services/fav-car.service';
+import { FavCar } from '../../models/favCar';
 @Component({
   selector: 'app-car-add',
   templateUrl: './car-add.component.html',
@@ -18,12 +20,17 @@ export class CarAddComponent implements OnInit {
    colorId:number|null=null;
    brandId:number|null=null;
    carAddForm:FormGroup;    
-   constructor(private formBuilder:FormBuilder,
+   constructor
+   (private formBuilder:FormBuilder,
     private carService:CarService,
     private brandService:BrandService,
     private colorService:ColorService,
-    private toastrService:ToastrService){}
-   ngOnInit(): void {
+    private toastrService:ToastrService,
+    private favCarService:FavCarService
+   ){}
+   
+   
+    ngOnInit(): void {
      this.createCarAddForm();
      this.brandService.getBrands().subscribe(response=>{
       this.brands=response.data;
@@ -31,8 +38,10 @@ export class CarAddComponent implements OnInit {
      this.colorService.getAllColor().subscribe(response=>{
       this.colors=response.data;
      })
-   }
-   onBrandChange() {
+    }
+
+
+  onBrandChange() {
     console.log(this.brandId);
     this.brandId=this.carAddForm.value.brandId;
   }
@@ -50,7 +59,7 @@ export class CarAddComponent implements OnInit {
         brandId:["",Validators.required]
        })
    }
-
+   
    addCar(){
     if(this.carAddForm.valid){
       let carModel = Object.assign({},this.carAddForm.value)

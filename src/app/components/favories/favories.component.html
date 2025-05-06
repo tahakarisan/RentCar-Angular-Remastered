@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
     <style>
         .card {
             margin-bottom: 12px;
@@ -16,25 +11,27 @@
             gap: 20px;
         }
     </style>
-</head>
-<body>
     <div class="container">
+        <div *ngIf="dataLoaded==false" class="d-flex justify-content-center">
+            <div style="margin-top: 100px;" class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
         <div class="row">
             <div class="col-4">
-                <h6 style="margin-top: 20px;">Favori Markalarım</h6>
+                <h6 *ngIf="dataLoaded" style="margin-top: 20px;">Favori Markalarım</h6>
             </div>
             <div class="col-8">
-                <h6 style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 15px;">Favori Araçlarım</h6>
-                
-                <div class="card-container">
-                    <div *ngFor="let favCar of favCars" class="card" style="width: 18rem;">
+                <h6 *ngIf="dataLoaded"  style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 15px;">Favori Araçlarım</h6>
+                <div *ngIf="dataLoaded"  class="card-container">
+                    <div  *ngFor="let favCar of favCars" class="card" style="width: 18rem;">
                         <img [src]="url + favCar.imagePath" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text title">{{favCar.brandName}}</p>
                             <h5 class="card-title">{{favCar.description}}</h5>
                             <div style="margin-top: 18px;" class="btn-container">
                                 <a [routerLink]="['/Cars/Details/', favCar.carId]" href="#" class="btn btn-primary">Detaylara Git</a>
-                                <button class="btn btn-danger">
+                                <button (click)="deleteFavCar(userId!,favCar.id)" class="btn btn-danger">
                                     <i class="bi bi-trash"></i> Sil
                                 </button>
                             </div>
@@ -47,5 +44,3 @@
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-</body>
-</html>

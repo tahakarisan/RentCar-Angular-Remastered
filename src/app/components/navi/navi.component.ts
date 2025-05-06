@@ -19,12 +19,15 @@ export class NaviComponent  implements OnInit {
     {
       localStorage.removeItem("token")
       this.toastrService.info("Çıkış yapıldı")
+      this.refreshPage();
     }
     else{
       this.toastrService.info("Çıkış iptal edildi")
     }
   }
-
+  refreshPage(){
+    window.location.reload();
+  }
   checkToken(){
     let token = localStorage.getItem("token") 
     if(token){
