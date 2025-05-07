@@ -66,31 +66,32 @@ export class CarComponent implements OnInit {
       console.log("Favori Arabalar:", this.favCars);
     });
   }
-  addFavCar(car:Car){
-    let parseId = parseInt(this.userId!);
-    this.favCar={
-      userId:parseId,
-      carId:car.id,
-      isRental:0
-    }
-    if(this.userId==null){
-      this.toastrService.error("Favorilere eklemek için giriş yapmalısınız","Favorilere Eklenemedi")
+  addFavCar(car: Car) {
+    if (this.userId == null) {
+      this.toastrService.error("Favorilere eklemek için giriş yapmalısınız", "Favorilere Eklenemedi");
       return;
     }
-    else{
-      if(this.favCars.find(f=>f.carId==this.favCar.carId)){
-        this.favCarService.addFavCar(this.favCar).subscribe((response)=>{
-          this.toastrService.success(response.message,"Favorilere Eklendi")
-        },responseError=>{
-          this.toastrService.error(responseError.error.message,"Favorilere Eklenemedi")
-        })
-      }
-      else{
-        this.toastrService.error("Bu araba zaten favorilerinizde","Favorilere Eklenemedi")
-      }
+  
+    let parseId = parseInt(this.userId);
+    this.favCar = {
+      userId: parseId,
+      carId: car.id,
+      isRental: 0
+    };
+  
+    const isAlreadyFav = this.favCars.find(f => f.carId === car.id);
+  
+    if (!isAlreadyFav) {
+      this.favCarService.addFavCar(this.favCar).subscribe((response) => {
+        this.toastrService.success(response.message, "Favorilere Eklendi");
+      }, (responseError) => {
+        this.toastrService.error(responseError.error.message, "Favorilere Eklenemedi");
+      });
+    } else {
+      this.toastrService.error("Bu araba zaten favorilerinizde", "Favorilere Eklenemedi");
     }
-    
   }
+  
   getCars(){
     this.carService.getCars().subscribe(response=>{
       this.cars=response.data

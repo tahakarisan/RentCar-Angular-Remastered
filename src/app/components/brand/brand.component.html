@@ -13,11 +13,11 @@ type="text"
     <li style="cursor: pointer;" (click)="setCurrentBrand(null)"
     [routerLink]="['']"
     [class]="getAllCurrentBrandClass()">
-    
     Tüm Markalar
     </li>
     <li *ngFor="let brand of brands |brandFilter:filterBrandName" [value]="brand.id" (click)="setCurrentBrand(brand);setBrandFilterId(brand.id)" [routerLink] = "['/Cars/brand/',brand.id]"[class]="getCurrentBrandClass(brand)" style="cursor: pointer;">
-    {{brand.brandName}}
+        <img style="width: 30px; height: 30px; border-radius: 50%;" src="{{brand.imagePath}}" alt="Logo Sembol">
+        {{brand.brandName}}
     </li>
 </ul>
 <br>

@@ -36,9 +36,11 @@ export class FavoriesComponent implements OnInit {
       this.toastrService.success("Başarılı","Favori araba silindi")
       console.log("Favori araba silindi:", response.message);
       this.getFavCars(this.userId!); // Favori arabaları güncelle
+      console.log("favCarId",favCarId);
       window.location.reload(); // Sayfayı yenile
     },responseError => {
       console.log("Favori araba silinemedi:", responseError.error.message,responseError.error.Errors);
+      console.log("favCarId",favCarId);
     });
   }
   getFavCars(userId: string): void {
