@@ -1,27 +1,46 @@
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <a [routerLink]="['']">
-        <img src="assets/images/header.png" alt="Aslan">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item" style="margin-left: 20px;">
-            <a class="nav-link active navElement" aria-current="page" href="#">Hakkımızda</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link active navElement" [routerLink]="['/favories']">Favoriler</a>
-          </li>
-        </ul>
-        <form class="d-flex" role="search">
-          <button *ngIf="checkToken()==true;" (click)="quit()" [routerLink]="['']" style="margin-right: 10px;" class="btn btn-outline-danger" type="submit">Çıkış Yap</button>
-          <button *ngIf="checkToken()==false;" [routerLink]="['/login']" style="margin-right: 10px;" class="btn btn-outline-success" type="submit">Giriş Yap</button>
-          <button  [routerLink]="['/register']" class="btn btn-outline-primary" type="submit">Kayıt Ol</button>
-        </form>
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a [routerLink]="['']" class="navbar-brand">
+      <img src="assets/images/header.png" alt="Aslan" height="60">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item ms-3">
+          <a class="nav-link active navElement" aria-current="page" href="#">Hakkımızda</a>
+        </li>
+        <li class="nav-item ms-3">
+          <a class="nav-link navElement" [routerLink]="['/favories']">Favoriler</a>
+        </li>
+      </ul>
+
+      <div class="d-flex align-items-center">
+        <ng-container *ngIf="!checkToken(); else userMenu">
+          <a [routerLink]="['/login']" class="btn btn-outline-success me-2">Giriş Yap</a>
+          <a [routerLink]="['/register']" class="btn btn-outline-primary me-3">Kayıt Ol</a>
+        </ng-container>
+
+        <ng-template #userMenu>
+          <div class="dropdown">
+            <a class="btn dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-user fa-xl me-2"></i> Hesabım
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li><a class="dropdown-item" [routerLink]="['/profile']">Profilim <i class="fa-regular fa-id-card ms-2"></i></a></li>
+              <li><a class="dropdown-item" [routerLink]="['/favories']">Favorilerim <i class="fa-solid fa-heart ms-2"></i></a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a style="cursor: pointer;" class="dropdown-item text-danger" (click)="quit()">Çıkış Yap <i class="fa-solid fa-right-from-bracket ms-2"></i></a></li>
+            </ul>
+          </div>
+        </ng-template>
       </div>
     </div>
-  </nav>
-
+  </div>
+</nav>

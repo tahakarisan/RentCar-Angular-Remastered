@@ -1,0 +1,51 @@
+<div class="container mt-4">
+    <div class="row">
+      <!-- Sol Panel: Kullanıcı Bilgileri -->
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-body text-center">
+            <i class="fa-solid fa-user-circle fa-5x mb-3 text-secondary"></i>
+            <h5 class="card-title">{{ users.firstName }} {{ users.lastName }}</h5>
+            <p class="card-text text-muted">{{ users.email }}</p>
+            <hr>
+            <p><strong>Email:</strong> {{ users.email }}</p>
+            <button class="btn btn-outline-primary btn-sm mt-3" >Profili Düzenle</button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Sağ Panel: Kiralama Bilgileri -->
+      <div class="col-md-8">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <strong>Aktif Kiralamalar</strong>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <br>
+              Teslim Yeri:
+            </li>
+          </ul>
+          <ng-template #noActive>
+            <div class="p-3 text-muted">Şu anda aktif bir kiralamanız yok.</div>
+          </ng-template>
+        </div>
+  
+        <div class="card shadow-sm">
+          <div class="card-header">
+            <strong>Kiralama Geçmişi</strong>
+          </div>
+          <ul class="list-group list-group-flush" >
+            <li class="list-group-item" >
+              <br>
+              Ödenen: 
+            </li>
+          </ul>
+          <ng-template #noHistory>
+            <div class="p-3 text-muted">Henüz bir kiralama geçmişiniz bulunmuyor.</div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  

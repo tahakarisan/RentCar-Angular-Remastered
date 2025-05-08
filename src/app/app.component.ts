@@ -10,7 +10,7 @@ export class AppComponent  {
   title = 'rentcar';
   showMenus: boolean = true;
   constructor(private router:Router){}
-  get isLoginOrRegisterPage(): boolean {
-    return this.router.url === '/login' || this.router.url === '/register';
+  get checkPage(): boolean {
+    return this.router.url === '/login' || this.router.url === '/register'|| this.router.url === '/profile';
   }
 }

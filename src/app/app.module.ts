@@ -26,6 +26,7 @@ import { BrandFilterPipe } from './pipes/brand-filter.pipe';
 import { ColorFilterPipe } from './pipes/color-filter.pipe';
 import { FavoriesComponent } from './components/favories/favories.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     BrandFilterPipe,
     ColorFilterPipe,
     FavoriesComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

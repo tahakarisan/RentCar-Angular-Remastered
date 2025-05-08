@@ -18,10 +18,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-4">
-                <h6 *ngIf="dataLoaded" style="margin-top: 20px;">Favori Markalarım</h6>
-            </div>
-            <div class="col-8">
+            <div class="col-12">
                 <h6 *ngIf="dataLoaded"  style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 15px;">Favori Araçlarım</h6>
                 <div *ngIf="dataLoaded"  class="card-container">
                     <div  *ngFor="let favCar of favCars" class="card" style="width: 18rem;">

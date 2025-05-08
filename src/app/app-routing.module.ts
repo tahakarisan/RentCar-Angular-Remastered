@@ -6,6 +6,7 @@ import { CarFilterComponent } from './components/car-filter/car-filter.component
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { LoginComponent } from './components/login/login.component';
 import { FavoriesComponent } from './components/favories/favories.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {path:"",component:CarComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:"Cars/brand/:brandFilter/color/:colorFilter",component:CarFilterComponent},
   {path:"login",component:LoginComponent},
   {path:"favories",component:FavoriesComponent},
+  {path:"profile",component:ProfileComponent},
 ];
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: 'enabled', // <-- bu satır kritik

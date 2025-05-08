@@ -4,8 +4,8 @@
     <div class="row">
         <div class="col-md-2">
             <br>
-            <app-brand *ngIf="!isLoginOrRegisterPage"></app-brand>
-            <app-color *ngIf="!isLoginOrRegisterPage"></app-color>
+            <app-brand *ngIf="!checkPage"></app-brand>
+            <app-color *ngIf="!checkPage"></app-color>
             <app-car-filter></app-car-filter>
         </div>
         <div class="col-md-10">
