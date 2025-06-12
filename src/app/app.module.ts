@@ -8,7 +8,7 @@ import { RentalComponent } from './components/rental/rental.component';
 import { UserComponent } from './components/user/user.component';
 import { CampaignComponent } from './components/campaign/campaign.component';
 import { RoleComponent } from './components/role/role.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, withInterceptors } from '@angular/common/http';
 import { NaviComponent } from './components/navi/navi.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { ColorComponent } from './components/color/color.component';
@@ -27,6 +27,7 @@ import { ColorFilterPipe } from './pipes/color-filter.pipe';
 import { FavoriesComponent } from './components/favories/favories.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     BrandFilterPipe,
     ColorFilterPipe,
     FavoriesComponent,
-    ProfileComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +64,11 @@ import { ProfileComponent } from './components/profile/profile.component';
   ],
   providers: [
     provideClientHydration(),
-    provideHttpClient(withFetch())
+    provideClientHydration(),
+    provideHttpClient(
+      withFetch(),
+      withInterceptors([AuthInterceptor])
+    )
   ],
   bootstrap: [AppComponent]
 })
