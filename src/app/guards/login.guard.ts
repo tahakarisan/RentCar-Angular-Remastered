@@ -5,7 +5,7 @@ export const loginGuard: CanActivateFn = (route, state) => {
   const token = localStorage.getItem('token');
   if (token==null) {
     router.navigate(['/login']);
-    return false;
+    return true;
   }
-  return true;
+  return false;
 };
